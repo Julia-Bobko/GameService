@@ -45,8 +45,6 @@ namespace GameService.Repositories
 
         public ResultStatus StartGame(string idGame, string idSecondGamer, string idCurrentGamer)
         {
-            var currentCamer = GetCurrentValue(idGame, idSecondGamer);
-            idCurrentGamer = currentCamer != 0 ? currentCamer.ToString() : idCurrentGamer;
             var sql = @"UPDATE [checkersGame] SET idSecondGamer = @idSecondGamer, idCurrentGamer = @idCurrentGamer, idGamerColorWhite = @idCurrentGamer WHERE idGame = @idGame";
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -59,19 +57,6 @@ namespace GameService.Repositories
             }
         }
 
-        private int GetCurrentValue(string idGame, string idSecondGamer)
-        {
-            var sql = @"SELECT TOP 1  C.idCurrentGamer FROM checkersGame C,
-                        (SELECT * FROM [checkersGame] WHERE idGame = @idGame) G
-                         WHERE (G.idFirstGamer = C.idFirstGamer AND G.idSecondGamer = @idSecondGamer) OR
-                        (G.idFirstGamer = @idSecondGamer AND G.idSecondGamer = C.idFirstGamer)                  
-                        ORDER BY C.dateGame desc";
-            using (var conn = new SqlConnection(ConnectionString))
-            {
-                var idCurrentGamer = conn.Query<int>(sql, new { idGame, idSecondGamer }).FirstOrDefault();
-                return idCurrentGamer;
-            }
-        }
 
         public  int GetIdFirstGamer(string idGame)
         {
@@ -178,6 +163,17 @@ namespace GameService.Repositories
                             G.login LIKE '%{0}%' {1}
                         WHERE 
                             C.idFirstGamer != {2} 
+                        AND
+                        C.idFirstGamer NOT  IN  ( SELECT distinct CASE  {2}
+                                                                      WHEN idFirstGamer THEN idSecondGamer 
+                                                                      WHEN idSecondGamer THEN idFirstGamer
+                                                                      ELSE ''
+                                                                  END
+                                                 from checkersGame
+                                                 WHERE
+                                                      idWinner IS NULL   
+                                                 AND  
+                                                      idSecondGamer  IS NOT NULL )
                         AND 
                             C.idSecondGamer IS NULL", userName == "0" ? String.Empty : userName, sqlOnline, idCurrentGamer);
             using (var conn = new SqlConnection(ConnectionString))
