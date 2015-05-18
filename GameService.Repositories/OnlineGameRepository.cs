@@ -43,17 +43,13 @@ namespace GameService.Repositories
             }
         }
 
-        public ResultStatus StartGame(string idGame, string idSecondGamer, string idCurrentGamer)
+        public bool StartGame(string idGame, string idSecondGamer, string idCurrentGamer)
         {
             var sql = @"UPDATE [checkersGame] SET idSecondGamer = @idSecondGamer, idCurrentGamer = @idCurrentGamer, idGamerColorWhite = @idCurrentGamer WHERE idGame = @idGame";
             using (var conn = new SqlConnection(ConnectionString))
             {
                 var result = conn.Execute(sql, new { idSecondGamer, idCurrentGamer, idGame });
-                return new ResultStatus
-                {
-                    IdCurrentGamer = Convert.ToInt32(idCurrentGamer),
-                    Success = result > 0 ? true : false
-                };
+                return result > 0 ? true : false;             
             }
         }
 

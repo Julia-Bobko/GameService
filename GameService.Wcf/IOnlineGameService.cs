@@ -19,7 +19,7 @@ namespace GameService.Wcf
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "StartGame/{idGame}/{idSecondGamer}/{idCurrentGamer}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
-        ResultStatus StartGame(string idGame, string idSecondGamer, string idCurrentGamer);
+        bool StartGame(string idGame, string idSecondGamer, string idCurrentGamer);
 
         //[OperationContract]
         //[WebInvoke(Method = "GET", UriTemplate = "UpdateStatusGame/{idGame}/{xmlCurrentStatus}/{idGamer}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml)]

@@ -26,7 +26,7 @@ namespace GameService.Wcf
             return result;
         }
 
-        public ResultStatus StartGame(string idGame, string idSecondGamer, string idCurrentGamer)
+        public bool StartGame(string idGame, string idSecondGamer, string idCurrentGamer)
         {
             var result = onlineGameRepository.StartGame(idGame, idSecondGamer, idCurrentGamer);
             return result;
