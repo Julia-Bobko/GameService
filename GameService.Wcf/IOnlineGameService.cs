@@ -60,6 +60,11 @@ namespace GameService.Wcf
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "FinishGame/{idGame}/{idWinner}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
         bool FinishGame(string idGame, string idWinner);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "GetFinishedGames/{idCurrentGamer}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        List<CurrentGame> GetFinishedGames(string idCurrentGamer);
+
     }
 
 }

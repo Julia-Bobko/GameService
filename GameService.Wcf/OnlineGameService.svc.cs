@@ -88,5 +88,11 @@ namespace GameService.Wcf
             var result = onlineGameRepository.FinishGame(idGame, idWinner);
             return result;
         }
+
+        public List<CurrentGame> GetFinishedGames(string idCurrentGamer)
+        {
+            var result = onlineGameRepository.GetFinishedGames(idCurrentGamer);
+            return result;
+        }
     }
 }

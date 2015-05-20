@@ -195,6 +195,23 @@ namespace GameService.Repositories
             }
         }
 
+        public List<CurrentGame> GetFinishedGames(string idCurrentGamer)
+        {
+            var sql = @" SELECT C.idGame, G.login, G.rating, G.idGamer FROM checkersGame C , gamers G 
+                        WHERE C.idWinner IS NOT NULL
+                                                 AND
+                                                       ((C.idFirstGamer = @idCurrentGamer AND G.idGamer = C.idSecondGamer) 
+                                                    OR 
+							                           (C.idSecondGamer = @idCurrentGamer AND G.idGamer = C.idFirstGamer) )
+						                        AND (C.idFirstGamer IS NOT NULL AND C.idSecondGamer IS NOT NULL)";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var curretGames = conn.Query<CurrentGame>(sql, new { idCurrentGamer }).ToList();
+                return curretGames;
+            }
+        }
+        
+
 
         public InputGame CheckInputGame(string idFirstGamer)
         {
