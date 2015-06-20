@@ -29,6 +29,12 @@ namespace GameService.Wcf
         [WebInvoke(UriTemplate = "GetStatisticsCollection/{game}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
         IEnumerable<NewStatistics> GetStatisticsCollection(string game);
         [OperationContract]
+        [WebInvoke(UriTemplate = "GetStatisticsCollectionByCity/{game}/{city}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
+        IEnumerable<NewStatistics> GetStatisticsCollectionByCity(string game, string city);
+        [OperationContract]
+        [WebInvoke(UriTemplate = "GetStatisticsCollectionBySocial/{game}/{social}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
+        IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(string game, string social);
+        [OperationContract]
         [WebInvoke(UriTemplate = "GetStatistics/{userId}/{game}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
         NewStatistics GetStatistics(string userId, string game);
         [OperationContract]

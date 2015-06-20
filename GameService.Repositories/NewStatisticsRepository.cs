@@ -50,7 +50,7 @@ namespace GameService.Repositories
 
         public IEnumerable<Entities.NewStatistics> GetStatisticsCollection(string game)
         {
-            var sql = "SELECT * FROM [NewStatistics] WHERE Game = @game";
+            var sql = "SELECT TOP 100 * FROM [NewStatistics] WHERE Game = @game ORDER BY Progress DESC";
             using (var conn = new SqlConnection(ConnectionString))
             {
                 var statistics = conn.Query<NewStatistics>(sql, new { game });
@@ -77,6 +77,38 @@ namespace GameService.Repositories
             {
                 var statistics = conn.Query<NewStatistics>(sql, new { userId, game }).FirstOrDefault();
                 return statistics != null ? true : false;
+            }
+        }
+
+        public IEnumerable<Entities.NewStatistics> GetStatisticsCollectionByCity(string game, string city)
+        {
+            city = "%|" + city;
+            var sql = @"SELECT TOP 100 * FROM [NewStatistics] 
+                        WHERE 
+                            Game = @game 
+                        AND
+                            UserInfo LIKE @city
+                        ORDER BY Progress DESC";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var statistics = conn.Query<NewStatistics>(sql, new { game, city });
+                return statistics;
+            }
+        }
+
+        public IEnumerable<Entities.NewStatistics> GetStatisticsCollectionBySocial(string game, string social)
+        {
+            social = social + "%";
+            var sql = @"SELECT * FROM [NewStatistics] 
+                        WHERE 
+                            Game = @game 
+                        AND
+                            UserId LIKE @social
+                        ORDER BY Progress DESC";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var statistics = conn.Query<NewStatistics>(sql, new { game, social });
+                return statistics;
             }
         }
     }

@@ -60,5 +60,18 @@ namespace GameService.Wcf
             var isExist = newStatisticsRepository.IsExistUserName(userName, titleGame);
             return isExist;
         }
+
+
+        public IEnumerable<NewStatistics> GetStatisticsCollectionByCity(string game, string city)
+        {
+            var statisticsCollection = newStatisticsRepository.GetStatisticsCollectionByCity(game, city);
+            return statisticsCollection;
+        }
+
+        public IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(string game, string social)
+        {
+            var statisticsCollection = newStatisticsRepository.GetStatisticsCollectionBySocial(game, social);
+            return statisticsCollection;
+        }
     }
 }
