@@ -11,28 +11,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="AuthorizeService.svc">
-      <publishTime>05/20/2015 16:07:01</publishTime>
+      <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="bin/Dapper.dll">
-      <publishTime>05/20/2015 16:07:02</publishTime>
+      <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="bin/GameService.Entities.dll">
-      <publishTime>05/20/2015 16:47:37</publishTime>
+      <publishTime>06/17/2015 03:16:14</publishTime>
     </File>
     <File Include="bin/GameService.Repositories.dll">
-      <publishTime>05/20/2015 16:47:40</publishTime>
+      <publishTime>06/17/2015 03:57:05</publishTime>
     </File>
     <File Include="bin/GameService.Wcf.dll">
-      <publishTime>05/20/2015 16:47:44</publishTime>
+      <publishTime>06/17/2015 03:57:08</publishTime>
+    </File>
+    <File Include="NewStatisticsService.svc">
+      <publishTime>06/17/2015 00:57:31</publishTime>
     </File>
     <File Include="OnlineGameService.svc">
-      <publishTime>05/20/2015 16:07:01</publishTime>
+      <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="StatisticsService.svc">
-      <publishTime>05/20/2015 16:07:01</publishTime>
+      <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/20/2015 16:07:01</publishTime>
+      <publishTime>06/17/2015 02:53:19</publishTime>
     </File>
   </ItemGroup>
 </Project>

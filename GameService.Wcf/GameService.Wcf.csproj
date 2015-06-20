@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthorizeService.svc" />
+    <Content Include="NewStatisticsService.svc" />
     <Content Include="OnlineGameService.svc" />
     <Content Include="StatisticsService.svc" />
     <Content Include="Web.config">
@@ -71,8 +72,12 @@
       <DependentUpon>AuthorizeService.svc</DependentUpon>
     </Compile>
     <Compile Include="IAuthorizeService.cs" />
+    <Compile Include="INewStatisticsService.cs" />
     <Compile Include="IOnlineGameService.cs" />
     <Compile Include="IStatisticsService.cs" />
+    <Compile Include="NewStatisticsService.svc.cs">
+      <DependentUpon>NewStatisticsService.svc</DependentUpon>
+    </Compile>
     <Compile Include="OnlineGameService.svc.cs">
       <DependentUpon>OnlineGameService.svc</DependentUpon>
     </Compile>

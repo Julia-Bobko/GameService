@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorizeRepository.cs" />
+    <Compile Include="NewStatisticsRepository.cs" />
     <Compile Include="OnlineGameRepository.cs" />
     <Compile Include="StatisticsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
