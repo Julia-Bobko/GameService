@@ -1,4 +1,5 @@
 ﻿using GameService.Entities;
+using GameService.Entities.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace GameService.Wcf
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped)]
         bool UpdateStatisticsWithoutProgress(NewStatistics obj);
         [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped)]
+        IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(FriendsRequest obj);
+        [OperationContract]
         [WebInvoke(UriTemplate = "DeleteStatistics/{userId}/{game}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
         bool DeleteStatistics(string userId, string game);
         [OperationContract]
@@ -31,9 +35,9 @@ namespace GameService.Wcf
         [OperationContract]
         [WebInvoke(UriTemplate = "GetStatisticsCollectionByCity/{game}/{city}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
         IEnumerable<NewStatistics> GetStatisticsCollectionByCity(string game, string city);
-        [OperationContract]
-        [WebInvoke(UriTemplate = "GetStatisticsCollectionBySocial/{game}/{social}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
-        IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(string game, string social);
+        //[OperationContract]
+        //[WebInvoke(UriTemplate = "GetStatisticsCollectionBySocial/{game}/{social}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
+        //IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(string game, string social);
         [OperationContract]
         [WebInvoke(UriTemplate = "GetStatistics/{userId}/{game}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, Method = "GET")]
         NewStatistics GetStatistics(string userId, string game);

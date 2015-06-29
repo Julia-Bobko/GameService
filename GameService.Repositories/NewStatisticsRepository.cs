@@ -111,5 +111,20 @@ namespace GameService.Repositories
                 return statistics;
             }
         }
+
+        public IEnumerable<Entities.NewStatistics> GetStatisticsCollectionBySocial(Entities.Requests.FriendsRequest request)
+        {
+            var sql = String.Format(@"SELECT * FROM [NewStatistics] 
+                                    WHERE 
+                                        Game = @Game
+                                    AND
+                                        UserId IN ({0})
+                                    ORDER BY Progress DESC", request.FriendsIdArray);
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var statistics = conn.Query<NewStatistics>(sql, new { request.Game });
+                return statistics;
+            }
+        }
     }
 }

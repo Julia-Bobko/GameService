@@ -46,6 +46,7 @@
     <Compile Include="Gamer.cs" />
     <Compile Include="InputGame.cs" />
     <Compile Include="NewStatistics.cs" />
+    <Compile Include="Requests\FriendsRequest.cs" />
     <Compile Include="ResultStatus.cs" />
     <Compile Include="Statistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

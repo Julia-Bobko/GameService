@@ -52,8 +52,7 @@ namespace GameService.Wcf
         {
             var statistics = newStatisticsRepository.GetStatistics(userId, game);
             return statistics;
-        }
-        
+        }     
 
         public bool IsExistUserName(string userName, string titleGame)
         {
@@ -61,16 +60,21 @@ namespace GameService.Wcf
             return isExist;
         }
 
-
         public IEnumerable<NewStatistics> GetStatisticsCollectionByCity(string game, string city)
         {
             var statisticsCollection = newStatisticsRepository.GetStatisticsCollectionByCity(game, city);
             return statisticsCollection;
         }
 
-        public IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(string game, string social)
+        //public IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(string game, string social)
+        //{
+        //    var statisticsCollection = newStatisticsRepository.GetStatisticsCollectionBySocial(game, social);
+        //    return statisticsCollection;
+        //}
+
+        public IEnumerable<NewStatistics> GetStatisticsCollectionBySocial(Entities.Requests.FriendsRequest obj)
         {
-            var statisticsCollection = newStatisticsRepository.GetStatisticsCollectionBySocial(game, social);
+            var statisticsCollection = newStatisticsRepository.GetStatisticsCollectionBySocial(obj);
             return statisticsCollection;
         }
     }
