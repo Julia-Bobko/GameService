@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthorizeService.svc" />
+    <Content Include="DateTimeService.svc" />
     <Content Include="NewStatisticsService.svc" />
     <Content Include="OnlineGameService.svc" />
     <Content Include="StatisticsService.svc" />
@@ -71,7 +72,11 @@
     <Compile Include="AuthorizeService.svc.cs">
       <DependentUpon>AuthorizeService.svc</DependentUpon>
     </Compile>
+    <Compile Include="DateTimeService.svc.cs">
+      <DependentUpon>DateTimeService.svc</DependentUpon>
+    </Compile>
     <Compile Include="IAuthorizeService.cs" />
+    <Compile Include="IDateTimeService.cs" />
     <Compile Include="INewStatisticsService.cs" />
     <Compile Include="IOnlineGameService.cs" />
     <Compile Include="IStatisticsService.cs" />
