@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAiH6shyMmAkSW/r+94CR9CgAAAAACAAAAAAAQZgAAAAEAACAAAAA0elvAjg5sq9dtXd/BWR0t1kfM1RoRxHsGSVlorMzBnQAAAAAOgAAAAAIAACAAAACZdcgR3OWJ5AichA/+e47uUDnM5Obg6Zol5EYbOtEgJCAAAAC93BaUgIURRlXL2+KHda7scY44a6oOcQkWf6DATlhr/UAAAAD4FDpp15fc0Val6s+4jG5Oxd69r/k/1mnWvFjB3HwUgNn3iXCdQtFmmrnYsEyAaRR+x1HGAxSLykVCSDzmqos8</EncryptedPassword>
-    <_PublishTargetUrl>ftp://ftp.prilaga.by/subdomains/gameservice/httpdocs</_PublishTargetUrl>
+    <_PublishTargetUrl>ftps://ftp.prilaga.by/subdomains/gameservice/httpdocs</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AuthorizeService.svc">
@@ -23,7 +23,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/29/2015 23:13:44</publishTime>
     </File>
     <File Include="bin/GameService.Wcf.dll">
-      <publishTime>06/29/2015 23:13:47</publishTime>
+      <publishTime>07/11/2015 19:33:28</publishTime>
+    </File>
+    <File Include="DateTimeService.svc">
+      <publishTime>07/11/2015 19:29:16</publishTime>
     </File>
     <File Include="NewStatisticsService.svc">
       <publishTime>06/17/2015 00:57:31</publishTime>
@@ -35,7 +38,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/17/2015 02:53:19</publishTime>
+      <publishTime>07/11/2015 19:32:58</publishTime>
     </File>
   </ItemGroup>
 </Project>
