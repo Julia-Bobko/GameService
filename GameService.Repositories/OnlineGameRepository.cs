@@ -264,8 +264,12 @@ namespace GameService.Repositories
 
         public int GetSecondGamerId(string idGame, string idFirstGamer)
         {
-            var sql = @" SELECT idSecondGamer FROM checkersGame
-                        WHERE idGame = @idGame AND idFirstGamer = @idFirstGamer";
+            var sql = @"SELECT CASE @idFirstGamer
+                                   WHEN idFirstGamer THEN idSecondGamer
+                                   WHEN idSecondGamer THEN idFirstGamer
+                               END 
+                        FROM checkersGame
+                        WHERE idGame = @idGame";
             using (var conn = new SqlConnection(ConnectionString))
             {
                 int idSecondGamer = conn.Query<int>(sql, new { idGame, idFirstGamer }).FirstOrDefault();
