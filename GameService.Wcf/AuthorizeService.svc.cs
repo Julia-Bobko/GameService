@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using GameService.Entities;
+using Checkers.Entities;
 
 namespace GameService.Wcf
 {
@@ -18,10 +20,17 @@ namespace GameService.Wcf
         {
             authorizeRepository = new AuthorizeRepository();
         }
-        public int CreateGamer(string login, string email, string hashPassword)
+
+        public int CreateGamer(Gamer obj)
         {
-            var isCreated = authorizeRepository.CreateGamer(login, email, hashPassword);
-            return isCreated;
+            int idGamer = authorizeRepository.CreateGamer(obj);
+            return idGamer;
         }
+
+        //public int CreateGamer(string login, string email, string hashPassword)
+        //{
+        //    var isCreated = authorizeRepository.CreateGamer(login, email, hashPassword);
+        //    return isCreated;
+        //}
     }
 }

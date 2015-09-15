@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Checkers.Entities;
+using GameService.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,8 +14,12 @@ namespace GameService.Wcf
     [ServiceContract]
     public interface IAuthorizeService
     {
+        //[OperationContract]
+        //[WebInvoke(Method = "GET", UriTemplate = "CreateGamer/{login}/{email}/{hashPassword}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        //int CreateGamer(string login, string email, string hashPassword);
+
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "CreateGamer/{login}/{email}/{hashPassword}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
-        int CreateGamer(string login, string email, string hashPassword);
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped)]
+        int CreateGamer(Gamer obj);
     }
 }
