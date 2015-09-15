@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Xml.Linq;
+using Checkers.Entities;
 
 namespace GameService.Wcf
 {
@@ -93,6 +94,18 @@ namespace GameService.Wcf
         {
             var result = onlineGameRepository.GetFinishedGames(idCurrentGamer);
             return result;
+        }
+
+        public Gamer GetGamer(string idGamer)
+        {
+            var gamer = onlineGameRepository.GetGamer(idGamer);
+            return gamer;
+        }
+
+        public int GetSecondGamerId(string idGame, string idFirstGamer)
+        {
+            int idSecondGamer = onlineGameRepository.GetSecondGamerId(idGame, idFirstGamer);
+            return idSecondGamer;
         }
     }
 }

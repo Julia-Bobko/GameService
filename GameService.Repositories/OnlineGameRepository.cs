@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using GameService.Entities;
 using System.Xml.Linq;
+using Checkers.Entities;
 
 namespace GameService.Repositories
 {
@@ -151,7 +152,7 @@ namespace GameService.Repositories
         {
             bool isCheckOnline = online == "1" ? true : false;
             string sqlOnline = isCheckOnline ? " AND G.lastOnline >= DATEADD(minute, -5, GETDATE()) " : String.Empty;
-            var sql = String.Format(@"SELECT C.idGame, C.idFirstGamer, G.login, G.rating 
+            var sql = String.Format(@"SELECT C.idGame, C.idFirstGamer, G.login, G.firstName, G.lastName, G.imageSource, G.city, G.rating 
                         FROM checkersGame C 
                         INNER JOIN gamers G ON 
                             C.idFirstGamer = G.idGamer 
@@ -181,7 +182,7 @@ namespace GameService.Repositories
 
         public List<CurrentGame> GetCurrentGames(string idCurrentGamer)
         {
-            var sql = @" SELECT C.idGame, G.login, G.rating, G.idGamer FROM checkersGame C , gamers G 
+            var sql = @" SELECT C.idGame, G.login, G.firstName, G.lastName, G.imageSource, G.city, G.rating, G.idGamer FROM checkersGame C , gamers G 
                         WHERE C.idWinner IS NULL
                                                  AND
                                                        ((C.idFirstGamer = @idCurrentGamer AND G.idGamer = C.idSecondGamer) 
@@ -197,7 +198,7 @@ namespace GameService.Repositories
 
         public List<CurrentGame> GetFinishedGames(string idCurrentGamer)
         {
-            var sql = @" SELECT C.idGame, G.login, G.rating, G.idGamer FROM checkersGame C , gamers G 
+            var sql = @" SELECT C.idGame, G.login, G.firstName, G.lastName, G.imageSource, G.city, G.rating, G.idGamer FROM checkersGame C , gamers G 
                         WHERE C.idWinner IS NOT NULL
                                                  AND
                                                        ((C.idFirstGamer = @idCurrentGamer AND G.idGamer = C.idSecondGamer) 
@@ -247,6 +248,28 @@ namespace GameService.Repositories
             {
                 var result = conn.Execute(sql, new { idGame, idWinner });
                 return result > 0 ? true : false;
+            }
+        }
+
+        public Gamer GetGamer(string idGamer)
+        {
+            var sql = @"SELECT * FROM [gamers] 
+                        WHERE idGamer = @idGamer";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var gamer = conn.Query<Gamer>(sql, new { idGamer }).FirstOrDefault();
+                return gamer;
+            }
+        }
+
+        public int GetSecondGamerId(string idGame, string idFirstGamer)
+        {
+            var sql = @" SELECT idSecondGamer FROM checkersGame
+                        WHERE idGame = @idGame AND idFirstGamer = @idFirstGamer";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                int idSecondGamer = conn.Query<int>(sql, new { idGame, idFirstGamer }).FirstOrDefault();
+                return idSecondGamer;
             }
         }
     }

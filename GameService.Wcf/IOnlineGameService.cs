@@ -1,4 +1,5 @@
-﻿using GameService.Entities;
+﻿using Checkers.Entities;
+using GameService.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,13 @@ namespace GameService.Wcf
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "GetFinishedGames/{idCurrentGamer}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
         List<CurrentGame> GetFinishedGames(string idCurrentGamer);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "GetGamer/{idGamer}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        Gamer GetGamer(string idGamer);
+
+        [WebInvoke(Method = "GET", UriTemplate = "GetSecondGamerId/{idGame}/{idFirstGamer}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        int GetSecondGamerId(string idGame, string idFirstGamer);
 
     }
 

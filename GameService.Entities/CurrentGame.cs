@@ -12,5 +12,9 @@ namespace GameService.Entities
         public string Login { get; set; }
         public int Rating { get; set; }
         public int IdGamer { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ImageSource { get; set; }
+        public string City { get; set; }
     }
 }
