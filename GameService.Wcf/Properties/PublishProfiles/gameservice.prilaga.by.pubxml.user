@@ -17,13 +17,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="bin/GameService.Entities.dll">
-      <publishTime>06/29/2015 21:22:33</publishTime>
+      <publishTime>03/24/2016 22:24:22</publishTime>
     </File>
     <File Include="bin/GameService.Repositories.dll">
-      <publishTime>06/29/2015 23:13:44</publishTime>
+      <publishTime>03/24/2016 22:24:22</publishTime>
     </File>
     <File Include="bin/GameService.Wcf.dll">
-      <publishTime>07/11/2015 19:33:28</publishTime>
+      <publishTime>03/24/2016 22:24:22</publishTime>
     </File>
     <File Include="DateTimeService.svc">
       <publishTime>07/11/2015 19:29:16</publishTime>
@@ -34,11 +34,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="OnlineGameService.svc">
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
+    <File Include="RatingService.svc">
+      <publishTime>03/24/2016 21:04:01</publishTime>
+    </File>
     <File Include="StatisticsService.svc">
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/11/2015 19:32:58</publishTime>
+      <publishTime>03/24/2016 22:21:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

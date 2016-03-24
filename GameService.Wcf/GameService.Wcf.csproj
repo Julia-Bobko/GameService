@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,6 +64,7 @@
     <Content Include="DateTimeService.svc" />
     <Content Include="NewStatisticsService.svc" />
     <Content Include="OnlineGameService.svc" />
+    <Content Include="RatingService.svc" />
     <Content Include="StatisticsService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -79,6 +81,7 @@
     <Compile Include="IDateTimeService.cs" />
     <Compile Include="INewStatisticsService.cs" />
     <Compile Include="IOnlineGameService.cs" />
+    <Compile Include="IRatingService.cs" />
     <Compile Include="IStatisticsService.cs" />
     <Compile Include="NewStatisticsService.svc.cs">
       <DependentUpon>NewStatisticsService.svc</DependentUpon>
@@ -87,6 +90,9 @@
       <DependentUpon>OnlineGameService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingService.svc.cs">
+      <DependentUpon>RatingService.svc</DependentUpon>
+    </Compile>
     <Compile Include="StatisticsService.svc.cs">
       <DependentUpon>StatisticsService.svc</DependentUpon>
     </Compile>

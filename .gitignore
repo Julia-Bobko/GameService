@@ -48,3 +48,8 @@ Temporary Items
 *debug*
 *release*
 bin
+.vs/config/applicationhost.config
+.vs/GameService/v14/.suo
+gameservicedb_24_03_2016
+*.user
+GameService.Wcf/Properties/PublishProfiles/gameservice.prilaga.by.pubxml.user
