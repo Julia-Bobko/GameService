@@ -17,5 +17,7 @@ namespace Checkers.Entities
         public string Login { get; set; }
         public string Email { get; set; }
         public string HashPassword { get; set; }
+        public string ResetPassword { get; set; }
+        public DateTime LastOnline { get; set; }
     }
 }

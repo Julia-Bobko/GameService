@@ -15,6 +15,8 @@ namespace GameService.Repositories
     {
         private static string ConnectionString = ConfigurationManager.ConnectionStrings["gameservicedb"].ConnectionString;
 
+        #region Social logic
+
         public int CreateGamer(string login, string email, string hashPassword)
         {
             using (var conn = new SqlConnection(ConnectionString))
@@ -80,5 +82,67 @@ namespace GameService.Repositories
                 return gamer != null ? true : false;
             }
         }
+
+        #endregion
+
+        #region JV logic
+
+        public int JVCreateGamer(Gamer gamer)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionString))
+                {
+                    if (!JVIsExistGamer(gamer.Login, gamer.Email))
+                    {
+                        int isGamer = conn.Execute("INSERT INTO gamers(authentication, imageSource, firstName, lastName, city, login, email, hashPassword, resetPassword, lastOnline) VALUES(@Authentication, @ImageSource, @FirstName, @LastName, @City, @Login, @Email, @HashPassword, @ResetPassword, @LastOnline)", new { gamer.Authentication, gamer.ImageSource, gamer.FirstName, gamer.LastName, gamer.City, gamer.Login, gamer.Email, gamer.HashPassword, gamer.ResetPassword, gamer.LastOnline });
+                        if (isGamer <= 0)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            var sql = @"SELECT idGamer FROM [gamers] 
+                                        WHERE (login = @Login OR email = @Email) AND hashPassword = @HashPassword";
+                            int result = conn.Query<int>(sql, new { gamer.Login, gamer.Email, gamer.HashPassword }).FirstOrDefault();
+                            return result;
+                        }
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+            }
+            catch { return -1; }
+        }
+
+        public int JVAuthorize(string login, string email, string hashPassword)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionString))
+                {
+                    var sql = @"SELECT idGamer FROM [gamers] 
+                        WHERE (login = @login OR email = @email) AND hashPassword = @hashPassword";
+                    int result = conn.Query<int>(sql, new { login, email, hashPassword }).FirstOrDefault();
+                    return result;
+                }
+            }
+            catch { return -1; }
+        }
+
+        public bool JVIsExistGamer(string login, string email)
+        {
+            var sql = @"SELECT * FROM [gamers] 
+                        WHERE login = @login OR email = @email";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var gamer = conn.Query(sql, new { login, email }).FirstOrDefault();
+                return gamer != null ? true : false;
+            }
+        }
+
+        #endregion    
     }
 }

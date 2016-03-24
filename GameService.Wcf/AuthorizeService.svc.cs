@@ -27,6 +27,18 @@ namespace GameService.Wcf
             return idGamer;
         }
 
+        public int JVCreateGamer(Gamer obj)
+        {
+            int idGamer = authorizeRepository.JVCreateGamer(obj);
+            return idGamer;
+        }
+
+        public int JVAuthorize(string login, string email, string hashPassword)
+        {
+            int idGamer = authorizeRepository.JVAuthorize(login, email, hashPassword);
+            return idGamer;
+        }
+
         //public int CreateGamer(string login, string email, string hashPassword)
         //{
         //    var isCreated = authorizeRepository.CreateGamer(login, email, hashPassword);
