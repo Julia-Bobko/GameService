@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using GameService.Entities;
 using Checkers.Entities;
+using Newtonsoft.Json;
 
 namespace GameService.Wcf
 {
@@ -27,9 +28,36 @@ namespace GameService.Wcf
             return idGamer;
         }
 
-        public int JVCreateGamer(Gamer obj)
+        public int JVCreateGamerPOST(Gamer obj)
         {
             int idGamer = authorizeRepository.JVCreateGamer(obj);
+            return idGamer;
+        }
+
+        //public int JVCreateGamerJSON(int a, DateTime b)
+        //{
+        //    //Gamer gamer = JsonConvert.DeserializeObject<Gamer>(obj);
+        //    //int idGamer = authorizeRepository.JVCreateGamer(gamer);
+        //    //return idGamer;
+        //    return -1;
+        //}
+
+        public int JVCreateGamerGET(string socialId, string authentication, string imageSource, string firstName, string lastName, string city, string login, string email, string hashPassword, string resetPassword)
+        {
+            Gamer gamer = new Gamer
+            {
+                Authentication = authentication,
+                City = city,
+                Email = email,
+                FirstName = firstName,
+                HashPassword = hashPassword,
+                ImageSource = imageSource,
+                LastName = lastName,
+                LastOnline = DateTime.Now,
+                Login = login,
+                ResetPassword = resetPassword
+            };
+            int idGamer = authorizeRepository.JVCreateGamer(gamer);
             return idGamer;
         }
 

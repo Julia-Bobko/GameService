@@ -24,7 +24,11 @@ namespace GameService.Wcf
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped)]
-        int JVCreateGamer(Gamer obj);
+        int JVCreateGamerPOST(Gamer obj);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "JVCreateGamerGET/{socialId}/{authentication}/{imageSource}/{firstName}/{lastName}/{city}/{login}/{email}/{hashPassword}/{resetPassword}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        int JVCreateGamerGET(string socialId, string authentication, string imageSource, string firstName, string lastName, string city, string login, string email, string hashPassword, string resetPassword);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "JVAuthorize/{login}/{email}/{hashPassword}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]

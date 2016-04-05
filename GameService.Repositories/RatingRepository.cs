@@ -59,14 +59,17 @@ namespace GameService.Repositories
             catch { return null; }
         }
 
-        public IEnumerable<Rating> GetRatings(string game)
+        public IEnumerable<RatingInfo> GetRatings(string game)
         {
             try
             {
-                var sql = "SELECT TOP 100 * FROM [rating] WHERE game = @game ORDER BY score DESC";
+                var sql = @"SELECT TOP 100 G.login, G.city, R.score FROM [rating] R
+                            LEFT JOIN [gamers] G ON G.idGamer = R.idGamer
+                            WHERE game = @game                            
+                            ORDER BY score DESC";
                 using (var conn = new SqlConnection(ConnectionString))
                 {
-                    var ratings = conn.Query<Rating>(sql, new { game });
+                    var ratings = conn.Query<RatingInfo>(sql, new { game });
                     return ratings;
                 }
             }

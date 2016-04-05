@@ -14,11 +14,19 @@ namespace GameService.Wcf
     {
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped)]
-        bool CreateRating(Rating rating);
+        bool CreateRatingPOST(Rating rating);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "CreateRatingGET/{idGamer}/{game}/{score}/{additionalInfo}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        bool CreateRatingGET(string idGamer, string game, string score, string additionalInfo);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped)]
-        bool UpdateRating(Rating rating);
+        bool UpdateRatingPOST(Rating rating);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "UpdateRatingGET/{idGamer}/{game}/{score}/{additionalInfo}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
+        bool UpdateRatingGET(string idGamer, string game, string score, string additionalInfo);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "GetRating/{idGamer}/{game}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
@@ -26,6 +34,6 @@ namespace GameService.Wcf
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "GetRatings/{game}", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml)]
-        IEnumerable<Rating> GetRatings(string game);
+        IEnumerable<RatingInfo> GetRatings(string game);
     }
 }

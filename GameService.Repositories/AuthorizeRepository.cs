@@ -95,7 +95,9 @@ namespace GameService.Repositories
                 {
                     if (!JVIsExistGamer(gamer.Login, gamer.Email))
                     {
-                        int isGamer = conn.Execute("INSERT INTO gamers(authentication, imageSource, firstName, lastName, city, login, email, hashPassword, resetPassword, lastOnline) VALUES(@Authentication, @ImageSource, @FirstName, @LastName, @City, @Login, @Email, @HashPassword, @ResetPassword, @LastOnline)", new { gamer.Authentication, gamer.ImageSource, gamer.FirstName, gamer.LastName, gamer.City, gamer.Login, gamer.Email, gamer.HashPassword, gamer.ResetPassword, gamer.LastOnline });
+                        int isGamer = conn.Execute(@"INSERT INTO gamers(authentication, imageSource, firstName, lastName, city, login, email, hashPassword, resetPassword, lastOnline) 
+                                                     VALUES(@Authentication, @ImageSource, @FirstName, @LastName, @City, @Login, @Email, @HashPassword, @ResetPassword, @LastOnline)", 
+                                                     new { gamer.Authentication, gamer.ImageSource, gamer.FirstName, gamer.LastName, gamer.City, gamer.Login, gamer.Email, gamer.HashPassword, gamer.ResetPassword, gamer.LastOnline });
                         if (isGamer <= 0)
                         {
                             return -1;
