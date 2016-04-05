@@ -8,6 +8,7 @@ namespace Checkers.Entities
 {
     public class Gamer
     {
+        public int IdGamer { get; set; }
         public long SocialId { get; set; }
         public string Authentication { get; set; }
         public string ImageSource { get; set; }

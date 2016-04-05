@@ -127,8 +127,8 @@ namespace GameService.Repositories
                 {
                     var sql = @"SELECT idGamer FROM [gamers] 
                         WHERE (login = @login OR email = @email) AND hashPassword = @hashPassword";
-                    int result = conn.Query<int>(sql, new { login, email, hashPassword }).FirstOrDefault();
-                    return result;
+                    Gamer gamer = conn.Query<Gamer>(sql, new { login, email, hashPassword }).FirstOrDefault();
+                    return gamer != null ? gamer.IdGamer : -1;
                 }
             }
             catch { return -1; }

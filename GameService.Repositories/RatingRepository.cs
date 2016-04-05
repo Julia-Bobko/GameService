@@ -25,6 +25,26 @@ namespace GameService.Repositories
             }
         }
 
+        //public bool CreateRating(Rating rating)
+        //{
+        //    try
+        //    {
+        //        using (var conn = new SqlConnection(ConnectionString))
+        //        {
+        //            if (!IsExistRating(rating.IdGamer, rating.Game))
+        //            {
+        //                int result = conn.Execute("INSERT INTO rating(idGamer, score, lastDate, additionalInfo, game) VALUES(@IdGamer, @Score, @LastDate, @AdditionalInfo, @Game)", new { rating.IdGamer, rating.Score, rating.LastDate, rating.AdditionalInfo, rating.Game });
+        //                return result <= 0 ? false : true;
+        //            }
+        //            else
+        //            {
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //    catch { return false; }
+        //}
+
         public bool CreateRating(Rating rating)
         {
             try
@@ -38,7 +58,11 @@ namespace GameService.Repositories
                     }
                     else
                     {
-                        return false;
+                        int result = conn.Execute(@"UPDATE rating 
+                                                    SET score = @Score, lastDate = @LastDate, additionalInfo = @AdditionalInfo
+                                                    WHERE idGamer = @IdGamer AND game = @Game AND (Select score from rating 
+                                                    where idGamer = @IdGamer AND game = @Game ) < @Score", new { rating.IdGamer, rating.Score, rating.LastDate, rating.AdditionalInfo, rating.Game });
+                        return result <= 0 ? false : true;
                     }
                 }
             }
@@ -76,6 +100,21 @@ namespace GameService.Repositories
             catch { return null; }
         }
 
+        //public bool UpdateRating(Rating rating)
+        //{
+        //    try
+        //    {
+        //        using (var conn = new SqlConnection(ConnectionString))
+        //        {
+        //            int result = conn.Execute(@"UPDATE rating 
+        //                                        SET score = @Score, lastDate = @LastDate, additionalInfo = @AdditionalInfo
+        //                                        WHERE idGamer = @IdGamer AND game = @Game", new { rating.IdGamer, rating.Score, rating.LastDate, rating.AdditionalInfo, rating.Game });
+        //            return result <= 0 ? false : true;
+        //        }
+        //    }
+        //    catch { return false; }
+        //}
+
         public bool UpdateRating(Rating rating)
         {
             try
@@ -83,8 +122,9 @@ namespace GameService.Repositories
                 using (var conn = new SqlConnection(ConnectionString))
                 {
                     int result = conn.Execute(@"UPDATE rating 
-                                                SET score = @Score, lastDate = @LastDate, additionalInfo = @AdditionalInfo
-                                                WHERE idGamer = @IdGamer AND game = @Game", new { rating.IdGamer, rating.Score, rating.LastDate, rating.AdditionalInfo, rating.Game });
+                                                    SET score = @Score, lastDate = @LastDate, additionalInfo = @AdditionalInfo
+                                                    WHERE idGamer = @IdGamer AND game = @Game AND (Select score from rating 
+                                                    where idGamer = @IdGamer AND game = @Game ) < @Score", new { rating.IdGamer, rating.Score, rating.LastDate, rating.AdditionalInfo, rating.Game });
                     return result <= 0 ? false : true;
                 }
             }

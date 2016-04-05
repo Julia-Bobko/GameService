@@ -17,13 +17,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="bin/GameService.Entities.dll">
-      <publishTime>04/01/2016 16:22:29</publishTime>
+      <publishTime>04/05/2016 23:11:15</publishTime>
     </File>
     <File Include="bin/GameService.Repositories.dll">
-      <publishTime>04/05/2016 13:25:44</publishTime>
+      <publishTime>04/05/2016 23:11:15</publishTime>
     </File>
     <File Include="bin/GameService.Wcf.dll">
-      <publishTime>04/05/2016 13:25:45</publishTime>
+      <publishTime>04/05/2016 23:11:15</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/04/2016 11:20:44</publishTime>
