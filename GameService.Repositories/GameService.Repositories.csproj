@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdsGameRepository.cs" />
     <Compile Include="AuthorizeRepository.cs" />
     <Compile Include="NewStatisticsRepository.cs" />
     <Compile Include="OnlineGameRepository.cs" />

@@ -64,6 +64,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdsGameService.svc" />
     <Content Include="AuthorizeService.svc" />
     <Content Include="DateTimeService.svc" />
     <Content Include="NewStatisticsService.svc" />
@@ -75,12 +76,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdsGameService.svc.cs">
+      <DependentUpon>AdsGameService.svc</DependentUpon>
+    </Compile>
     <Compile Include="AuthorizeService.svc.cs">
       <DependentUpon>AuthorizeService.svc</DependentUpon>
     </Compile>
     <Compile Include="DateTimeService.svc.cs">
       <DependentUpon>DateTimeService.svc</DependentUpon>
     </Compile>
+    <Compile Include="IAdsGameService.cs" />
     <Compile Include="IAuthorizeService.cs" />
     <Compile Include="IDateTimeService.cs" />
     <Compile Include="INewStatisticsService.cs" />

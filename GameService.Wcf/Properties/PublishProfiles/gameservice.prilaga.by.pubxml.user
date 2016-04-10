@@ -10,6 +10,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>ftps://ftp.prilaga.by/subdomains/gameservice/httpdocs</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="AdsGameService.svc">
+      <publishTime>04/10/2016 15:44:56</publishTime>
+    </File>
     <File Include="AuthorizeService.svc">
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
@@ -17,13 +20,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="bin/GameService.Entities.dll">
-      <publishTime>04/05/2016 23:11:15</publishTime>
+      <publishTime>04/10/2016 16:06:05</publishTime>
     </File>
     <File Include="bin/GameService.Repositories.dll">
-      <publishTime>04/05/2016 23:11:15</publishTime>
+      <publishTime>04/10/2016 20:49:47</publishTime>
     </File>
     <File Include="bin/GameService.Wcf.dll">
-      <publishTime>04/05/2016 23:11:15</publishTime>
+      <publishTime>04/10/2016 20:49:47</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/04/2016 11:20:44</publishTime>
@@ -47,7 +50,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2015 10:35:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/24/2016 22:21:31</publishTime>
+      <publishTime>04/10/2016 16:03:33</publishTime>
     </File>
   </ItemGroup>
 </Project>
